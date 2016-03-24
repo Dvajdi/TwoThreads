@@ -22,6 +22,7 @@ int mSeconds;
 
         tv = (TextView)findViewById(R.id.textView);
 
+
         handler=new Handler(){
             @Override
             public void handleMessage(Message msg) {
@@ -73,15 +74,13 @@ int mSeconds;
         handler.post(new Runnable() {
             @Override
             public void run() {
-                //  Форматируем секунды
-                //  в часы, минуты, секунды
                 String time = "" + mSeconds;
                 timeTextView.setText(time);
-
+                timeTextView.setBackgroundColor(Color.rgb(mSeconds, mSeconds,255));
                     mSeconds++;
+                Log.d("dom",""+mSeconds);
+                handler.postDelayed(this, 50);
 
-                // Запускаем код снова с задержкой в одну секунду
-                handler.postDelayed(this, 1000);
             }
         });
     }
